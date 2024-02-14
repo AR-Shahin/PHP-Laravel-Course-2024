@@ -1,133 +1,101 @@
 <?php
-$a = 13;
-$b = 20;
-$c = 30;
+
+include "./inc/header1.php";
+
+echo "our code";
+// include_once "./inc/header.php";
+// include_once "./inc/header.php";
+// include "./inc/header.php";
+// include "./inc/header.php";
+// require "./inc/header.php";
+// echo "llllll";
+include "./inc/footer.php";
 
 
 
-// if($a % 2 == 0){
-//     if(true){
+die;
+function heyHello(string $name,Closure $sendEmail) : void {
 
-//     }else{
-//         if(true){
+    // 
+    // 
 
-//         }
-//     }
-//     echo "Even";
-// }else{
-//     echo "Odd";
-// }
-
-// echo $a % 2 == 0 ? "Even" : "Odd" ;
-
-// if(($a === 10) && ($b == 20) ){
-//     echo "If block!";
-// }
-// elseif(true){
-
-// }
-// elseif(true){
-
-// }
-// elseif(true){
-
-// }
-// elseif(true){
-
-// }
-// elseif(true){
-
-// }
-
-// else {
-//     echo "Else block";
-// }
-
-// $ch = 10;
-
-// switch($ch){
-//     case 1:
-//         echo "ONE";
-//         break;
-
-//     case 2:
-//         echo "Two";
-//         break;
-
-//     default :
-//         echo "Nothing!";
-// }
-
-$food = "bar";
-
-// echo match ($food) {
-//     'apple' => 'This food is an apple',
-//     'bar' => 'This food is a bar',
-//     'cake' => 'This food is a cake',
-// };
-// echo "Hello World! <br>";
-
-// for($i=1;$i<=10;$i++){
-//     if($i == 5){
-//         continue;
-//     }
-//     echo "Hello World -> {$i}! <br>";
-// }
-
-// $i = 1;
-// while($i <= 5){
-//     echo "$i <br>";
-//     $i ++;
-// }
-
-// do{
-//     echo "I am working! <br>";
-//     $i++;
-// }
-// while(false);
-
-
-$arr = range(1,10,2); // 1,2,3,4,5,6,7,8,9,10
-
-// echo rand(1,100);
-// var_dump($arr);
-
-// foreach($arr as $key=>$value){
-//     echo $value . " -> index = {$key}<br>";
-// }
-
-
-$arr = [
-    [1,2,3],
-    [2,4,5],
-    [2,3,4]
-];
-
-// $arr = array(array(),array(),array());
-
-
-$members = ["Peter"=>"35", "Ben"=>"37", "Joe"=>"43"];
-
-// foreach($members as $key=>$value){
-//     echo $key . " {$value}<br>";
-// }
-
-
-function sayHello (string $name,int $roll=10):void{
-    echo "Hello $name $roll!";
-}
-$n = "Shahin";
-// sayHello($n,200);
-
-
-$x = 10;
-
-function anotherFunction(){
-    global $x;
-    $y = 100;
-    echo $x;
+    $sendEmail($name);
 }
 
-anotherFunction();
+// heyHello("Shahin",fn($name) => "" );
 
-echo $y;
+$sum = function($a,$b){
+    return $a + $b;
+};
+
+$sub = fn($a,$b) => $a =$b;
+
+// var_dump($sub(20,10));
+
+// echo gettype($sum);
+// var_dump($sum);
+
+// echo $sum(10,20);
+
+
+
+
+function sendEmail($name,$email,$port)  {
+    
+    var_dump($name);
+}
+
+function sum(...$args){
+    // var_dump($args);
+
+    // foreach($args as $a){
+    //     echo $a ." ";
+    // }
+
+    echo array_sum($args);
+}
+// sendEmail("name","email",209);
+
+// sendEmail(email:"ars@mail.com",name:"sahahin",port:300);
+
+// exit;
+// die("Die");
+// echo "hi";
+// sum(10,20,20);
+
+$arr = [10,25,35,40,50];
+
+$brr = array_map(function($item){
+    return $item + 2;
+},$arr);
+
+$c = array_reverse($arr);
+
+$d = array_filter($arr,fn($item) => $item % 2 == 0);
+
+$e = array_chunk($arr,2);
+
+
+// var_dump($e);
+
+// var_dump(in_array(35,$arr));
+
+
+$str = "I love bangladesh";
+
+$a = explode("-",$str);
+
+// echo implode("-",$arr);
+
+// var_dump($a);
+
+// echo count($arr);
+
+// echo md5("ars");
+
+// echo strtolower("MAFNSDLFNSDL");
+// echo strtoupper("ars");
+
+echo ucwords("shahin is a developer");
+echo ucfirst("shahin is a developer");
+
