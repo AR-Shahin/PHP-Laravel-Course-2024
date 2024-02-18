@@ -1,101 +1,51 @@
 <?php
 
-include "./inc/header1.php";
+// echo $_SERVER["REQUEST_METHOD"];
+// function increment(&$num) {
+//     $num++;
+//     echo "Inside function: $num <br>";
+// }
 
-echo "our code";
-// include_once "./inc/header.php";
-// include_once "./inc/header.php";
-// include "./inc/header.php";
-// include "./inc/header.php";
-// require "./inc/header.php";
-// echo "llllll";
-include "./inc/footer.php";
+// $value = 5;
+// increment($value);
+// echo "Outside function: $value <br>";
+$name = "Shahin";
 
+function hello(){
 
-
-die;
-function heyHello(string $name,Closure $sendEmail) : void {
-
-    // 
-    // 
-
-    $sendEmail($name);
+    // global $name;
+    // echo $name;
+    echo $GLOBALS['name'];
 }
 
-// heyHello("Shahin",fn($name) => "" );
-
-$sum = function($a,$b){
-    return $a + $b;
-};
-
-$sub = fn($a,$b) => $a =$b;
-
-// var_dump($sub(20,10));
-
-// echo gettype($sum);
-// var_dump($sum);
-
-// echo $sum(10,20);
+// hello();
+// echo $_SERVER['SERVER_NAME'];
 
 
-
-
-function sendEmail($name,$email,$port)  {
-    
-    var_dump($name);
+session_start();
+echo $_SESSION["db"][0];
+if(!$_SESSION["db"]){
+    header("Location: login.php");
 }
+// $_SESSION["name"] = "ARS";
 
-function sum(...$args){
-    // var_dump($args);
+?>
 
-    // foreach($args as $a){
-    //     echo $a ." ";
-    // }
-
-    echo array_sum($args);
-}
-// sendEmail("name","email",209);
-
-// sendEmail(email:"ars@mail.com",name:"sahahin",port:300);
-
-// exit;
-// die("Die");
-// echo "hi";
-// sum(10,20,20);
-
-$arr = [10,25,35,40,50];
-
-$brr = array_map(function($item){
-    return $item + 2;
-},$arr);
-
-$c = array_reverse($arr);
-
-$d = array_filter($arr,fn($item) => $item % 2 == 0);
-
-$e = array_chunk($arr,2);
-
-
-// var_dump($e);
-
-// var_dump(in_array(35,$arr));
-
-
-$str = "I love bangladesh";
-
-$a = explode("-",$str);
-
-// echo implode("-",$arr);
-
-// var_dump($a);
-
-// echo count($arr);
-
-// echo md5("ars");
-
-// echo strtolower("MAFNSDLFNSDL");
-// echo strtoupper("ars");
-
-echo ucwords("shahin is a developer");
-echo ucfirst("shahin is a developer");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Dashboard</h4>
+    <p>User Name : <?= $_SESSION["db"][0] ?></p>
+    <a href="./logout.php">Logout</a>
+    <!-- <form action="./app/controller.php" method="GET">
+        <input type="text" name="name"> <br>
+        <button>Submit</button>
+    </form> -->
+</body>
+</html>
 
