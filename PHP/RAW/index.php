@@ -1,5 +1,66 @@
 <?php
 
+echo "Copyright 2009- " . date("Y") ." <br>";
+
+
+
+// echo "The time is " . date("h:i:sA");
+
+
+// $d=strtotime("10:30pm April 15 2014");
+// echo "Created date is " . date("Y-m-d h:i:sa", $d);
+
+
+// echo  time();
+
+setcookie("authToken","test value", -(time() + (86400 * 30)));
+
+
+
+// echo $_COOKIE['authToken'];
+
+
+$a = 10;
+$b = 0;
+
+$age = array("Peter"=>35, "Ben"=>37, "Joe"=>43);
+
+// var_dump($age);
+
+$jsonData = json_encode($age);
+
+var_dump(json_decode($jsonData));
+exit;
+
+try{
+    if($b == 0){
+        throw new Exception("Custom");
+    }else{
+
+        echo $a / $b;
+    }
+    
+}catch(Exception $e){
+    echo $e->getMessage();
+}
+catch(Exception $e){
+    echo "custom error block";
+}
+finally{
+    echo "finally";
+}
+
+
+
+
+
+
+
+
+
+
+
+exit;
 // echo $_SERVER["REQUEST_METHOD"];
 // function increment(&$num) {
 //     $num++;
