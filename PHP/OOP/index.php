@@ -1,102 +1,72 @@
 <?php
-
-class Human{
-    // public $name = "default value";
-    // public $age = "";
-    
-
-    // function sayHello($n){
-
-    //     $this->display($n);
-    //     // echo "Hello $n";
-    // }
-
-    function display($var){
-        echo "$var";
+include "./User.php";
+class Repo{
+    function sayHello()  {
+        echo "Hello";
     }
 
+    function goodBye()  {
+        echo "Bye";
+    }
+}
 
-    // function sayBye()  {
-    //     echo "Good Bye $this->name";
-    // }
-
-    // public function __construct($name,$age)
-    // {
-    //     $this->name = $name;
-    //     $this->age = $age;
-    //     echo "Invoke From Constructor!<br>";
-    // }
-
-    public function __construct(public $name,public $age)
+class Helper{
+    static function __callStatic($method, $arguments)
     {
+        $proxy = new Repo;
+
+        if(method_exists($proxy,$method)){
+            return $proxy->$method(...$arguments);
+        }else{
+            throw new Exception("$method doesn't exit");
+        }
         
     }
-
-    // function __destruct()
-    // {
-    //     echo "<br>Invoke From Destructor!<br>";
-    // }
-
-    // function __invoke()
-    // {
-    //     echo "I am from invoke magic method";
-    // }
-
-    // function __get($key)  {
-    //     echo $key . " Does not exist";
-    // }
-
-    // function __set($key,$val)  {
-    //     $key = $val;
-
-    //     echo $key;
-    // }
-
 }
 
-class User extends Human{
+class Human{
 
-    // function display($var)
-    // {
-    //     echo "Our display";
-    // }
+    public const STATUS = "false";
 
-    function test() : void {
-        echo "TEST";
+    public $name = "ARS";
+    public static $age = 10;
+
+    public function sayHello() :self{
+        echo "Hello <br>";
+        return $this;
     }
 
-    public function __construct(public $name,public $age,$height)
+    public  function sayHi() {
+        echo "Hi <br>";
+       return $this;
+    }
+
+
+    public function setAge($val){
+        self::$age = $val;
+    }
+
+    public function getAge(){
+        echo self::$age;
+    }
+
+    static function __callStatic($method, $arguments)
     {
-        parent::__construct($name,$age);
+        echo $method  ." doesn't exits";
     }
+
 }
 
+// echo Human::STATUS;
+
+// $human2 = new Human;
+
+// Human::ars();
+
+// $human1->getAge();
+// $human1->setAge(1000);
+// $human2->getAge() ;
 
 
-$u = new User("ars",20,5.7);
 
-// $u->display("ars");
-
-echo $u->name;
-
-// $user1 = new Human();
-
-// $user1();
-
-// echo $user1->salary;
-// $user2 = new Human("User 2","20");
-
-
-// $user1->name = "Shahin";
-// $user2->name = "ars";
-
-// $user1->sayHello("ARS");
-
-// $user1->sayBye();
-// $user2->sayBye();
-
-// if($user1 instanceof User){
-//     echo "Yes";
-// }else{
-//     echo "NO";
-// }
+(new Human)->sayHello()->sayHi();
