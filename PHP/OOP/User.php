@@ -1,78 +1,42 @@
 <?php
 
-$name = "";
+// interface twoDPrint{
+//     public function print();
+// }
 
-abstract class Model{
-    public function connect(){
-        // 
-    }
+// interface threeDPrint{
+//     public function printTwo();
+// }
 
+// class Printer implements twoDPrint,threeDPrint{
+//     public function print(){
 
-    abstract function pay():void;
-}
-class User extends Model{
-    public $name;
-    protected $age;
-    private $password;
+//     }
 
-    function setPassword($pass)  {
-        $this->password = $pass;
-    }
-
-    function getPassword()  {
-        return $this->password;
-    }
-
-
-    function pay() :void {
+//     function printTwo() {
         
+//     }
+// }
+
+
+trait Helper{
+    public $name = "Shahin";
+    function sayHello()  {
+        echo "Hello $this->name";
     }
 }
 
-class Agent extends User{
-
-}
-
-
-abstract class Animal{
-    public $name = "";
-    function __construct($name){
-        $this->name = $name;
-    }
-    function getName() : void {
-        echo $this->name;
-    }
-    abstract function makeSound();
-    
-}
-
-
-class Dog extends Animal{
-    function __construct($name){
-        parent::__construct($name);
-    }
-
-    function makeSound(){
-        echo "geo geo";
+trait Logger{
+    function log()  {
+        echo "log";
     }
 }
 
 
-class Tiger extends Animal{
-    function __construct($name){
-        parent::__construct($name);
-    }
+class User{
+    use Helper,Logger;
 
-    function makeSound(){
-        echo "tiger sound";
-    }
 }
 
-interface IName{
-    public function abc();
-}
 
-$dog = new Dog("Dog");
-$tiger = new Tiger("tiger");
-
-$dog->makeSound();
+// (new User)->sayHello();
