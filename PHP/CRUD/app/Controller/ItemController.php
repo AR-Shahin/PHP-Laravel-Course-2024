@@ -19,4 +19,15 @@ if(isset($_REQUEST["submit_item_form"])){
     }
 }
 
+// Delete 
+if(isset($_REQUEST["deleteBtn"])){
+    $id = $_POST["id"];
+    if( $item->delete($id)){
+        $_SESSION["key"] = "Deleted!";
+        header("Location: /index.php");
+    }else{
+        echo "ERROR";
+        die();
+    }
+}
 

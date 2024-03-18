@@ -1,4 +1,8 @@
 <!doctype html>
+<?php
+  
+?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
