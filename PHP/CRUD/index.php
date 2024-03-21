@@ -2,6 +2,9 @@
 
 use App\Model\Item;
 session_start();
+if(!isset($_SESSION["userName"])){
+    header("Location: /login.php");
+}
 require "./bootstrap/app.php";
 require "./views/layouts/header.php";
 
@@ -18,10 +21,17 @@ if(isset($_REQUEST["deleteBtn"])){
     }
 }
 
+if(isset($_REQUEST["logout"])){
+    unset($_SESSION["userName"]);
+    header("Location: /login.php");
+}
 ?>
 
 
 <div class="container">
+    <form action="" method="POST">
+        <button name="logout">Logout</button>
+    </form>
     <div class="row mt-5 justify-content-center">
         <div class="col-md-6 ">
             <?php
