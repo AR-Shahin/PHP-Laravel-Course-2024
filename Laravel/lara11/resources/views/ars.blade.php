@@ -7,6 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hi</h1>
+  <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <input type="email" name="email">
+    </div>
+
+      <div>
+        <input type="file" name="image">
+    </div>
+    <div>
+       <button>Submit</button>
+    </div>
+  </form>
 </body>
 </html>
