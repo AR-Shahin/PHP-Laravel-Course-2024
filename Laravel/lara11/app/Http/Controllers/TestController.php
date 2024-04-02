@@ -9,10 +9,16 @@ class TestController extends Controller
 {
     function index(Request $request) {
 
-        $path = public_path("/abc.txt");
-        return response()->download($path,date("y"));
-        // return $request->query("name","ars");
-       return view("ars");
+
+        $users = [
+            ["name" => "shahin"],
+            ["name" => "ars"],
+            ["name" => "omi"],
+        ];
+        $users = [];
+        $title = "Laravel";
+        $html = "<h1 style='color:red'>Hello</h1>";
+       return view("admin.index",compact("users","title","html"));
     }
 
     function store(Request $request){
