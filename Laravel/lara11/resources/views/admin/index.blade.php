@@ -14,10 +14,15 @@
 <body>
     @include("admin.nav",["data" => "hi"])
 <h1>{!! $html !!}</h1>
-
 @php
- dd($key)
+    $d = [10,20,40];
 @endphp
+{{-- <x-alert title="this is our titile" :data="$d"/> --}}
+<x-test :data="$d" users="custom data "></x-test>
+<x-front.input/>
+{{-- @php
+ dd($key)
+@endphp --}}
 {{ $site }}
 
 @if (false)

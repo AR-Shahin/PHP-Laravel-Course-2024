@@ -9,6 +9,17 @@ use App\Http\Controllers\PhotoController;
 
 // require "../routes/auth.php";
 
+Route::get("login",function(){
+    return view("login");
+});
+
+
+Route::get("category",function(){
+    return view("category");
+});
+Route::get("brand",function(){
+    return view("brand");
+});
 // Route::redirect("/","/login");
 Route::get('/',[TestController::class,"index"]);
 
