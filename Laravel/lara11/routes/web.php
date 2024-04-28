@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TestMiddleware;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\QueryBuilderController;
 use App\Http\Requests\FormValidationRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
@@ -61,7 +62,7 @@ Route::post('/validation', function (FormValidationRequest $request) {
 
 
 
-    
+
     // return $request->safe()->only(["name"]);
 
 //     $data = Validator::make($request->all(),[
@@ -72,3 +73,6 @@ Route::post('/validation', function (FormValidationRequest $request) {
 //     return redirect()->back()->withErrors($data);
 // }
 })->name("validation");
+
+
+Route::get("query",[QueryBuilderController::class,"index"]);
