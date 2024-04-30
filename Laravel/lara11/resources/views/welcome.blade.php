@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
 
-
-        @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
+<p>{{ $users->total() }}</p>
+        @foreach ($users as $user)
+            <div>{{ $user->name ?? "" }}</div>
         @endforeach
 
-    <form action="{{ route("validation") }}" method="POST">
-        @csrf
-        <input type="text" name="name[]" value="{{ old("name") }}">
-        @error("name")
-            {{ $message }}
-        @enderror
-        <br>
-        <input type="text" name="email" value="{{ old("email") }}"> <br>
-        <input type="number" name="age" value="{{ old("age") }}"> <br>
-      <button>Submit</button>
-    </form>
+        {{ $users->links() }}
+
+
 </body>
 </html>

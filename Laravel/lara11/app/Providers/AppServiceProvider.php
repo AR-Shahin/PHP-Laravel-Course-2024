@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\View as ViewView;
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //     return Limit::perMinute(5);
         // });
 
+        Paginator::useBootstrapFive();
         View::share("site","Site title");
 
 
